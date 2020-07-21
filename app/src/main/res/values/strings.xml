@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">InfinitelySwipableCards</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="fetching_text">Fetching data…</string>
 </resources>

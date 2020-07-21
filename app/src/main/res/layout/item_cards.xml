@@ -6,12 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
+
+    <TextView
+        android:id="@+id/tvNumOfCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="32sp"
+        tools:text="#3/10" />
 
     <TextView
         android:id="@+id/card_item_text"
         style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:padding="32dp"
