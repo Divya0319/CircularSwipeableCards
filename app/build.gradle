@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -22,6 +23,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -33,5 +39,32 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.archLifecycleVersion"
+
+    //LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:$rootProject.archLifecycleVersion"
+
+    //RxJava2 for asynchronous tasks
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+
+    //Dagger2 for dependency injection
+    implementation 'com.google.dagger:dagger:2.28.1'
+    kapt 'com.google.dagger:dagger-compiler:2.28.1'
+
+    //Retrofit for API calls
+    implementation("com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version")
+    //RxJava2 call adapter
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit2Version")
+    //Gson Converter
+    implementation("com.squareup.retrofit2:converter-gson:$rootProject.retrofit2Version")
+
+    //Gson for parsing JSON
+    implementation("com.google.code.gson:gson:$rootProject.gsonVersion")
+
+    //for Recyclerview and Snackbar
+    implementation 'com.google.android.material:material:1.1.0'
 
 }
