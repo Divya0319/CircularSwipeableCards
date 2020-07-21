@@ -12,13 +12,13 @@ import androidx.fragment.app.Fragment
  */
 class CardFragment : Fragment() {
     private lateinit var bundle: Bundle
-    private lateinit var pos: String
+    private var pos: Int = 0
     private lateinit var text: String
     private var size: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bundle = arguments!!
-        pos = bundle.getString("pos")!!
+        pos = bundle.getInt("pos")
         text = bundle.getString("text")!!
         size = bundle.getInt("size")
     }

@@ -24,7 +24,7 @@ class CardPagerAdapter(
     override fun getItem(position: Int): Fragment {
         val cardFragment = CardFragment()
         val bundle = Bundle()
-        bundle.putString("pos", cardsList[position].id)
+        bundle.putInt("pos", position + 1)
         bundle.putString("text", cardsList[position].text)
         bundle.putInt("size", cardsList.size)
         cardFragment.arguments = bundle
