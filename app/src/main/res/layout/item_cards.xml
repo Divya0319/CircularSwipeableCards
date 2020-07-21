@@ -9,24 +9,33 @@
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/tvNumOfCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="32sp"
-        tools:text="#3/10" />
-
-    <TextView
-        android:id="@+id/card_item_text"
-        style="@style/TextAppearance.AppCompat.Body1"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:padding="32dp"
-        android:textSize="28sp"
-        tools:text="@string/lorem_ipsum" />
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tvNumOfCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="#3/10" />
 
+        <TextView
+            android:id="@+id/card_item_text"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="32dp"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNumOfCard"
+            tools:text="@string/lorem_ipsum" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

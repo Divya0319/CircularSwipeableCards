@@ -4,7 +4,7 @@ package com.assignment.infinitelyswipablecards.models
  * Created by Divya Gupta.
  */
 class CardAPIResponsePOJO {
-    var data: List<DataBean> = listOf()
+    var data: MutableList<DataBean> = mutableListOf()
 
     data class DataBean(
         var id: String = "",

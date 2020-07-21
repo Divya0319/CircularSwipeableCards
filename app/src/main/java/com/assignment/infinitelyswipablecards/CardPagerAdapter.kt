@@ -1,61 +1,34 @@
 package com.assignment.infinitelyswipablecards
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.viewpager.widget.PagerAdapter
-import com.assignment.infinitelyswipablecards.commons.Constants
-import com.assignment.infinitelyswipablecards.models.CardItem
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import com.assignment.infinitelyswipablecards.models.CardAPIResponsePOJO
 
 /**
  * Created by Divya Gupta.
  */
-class CardPagerAdapter : PagerAdapter() {
+class CardPagerAdapter(
+    fm: FragmentManager,
+    private val cardsList: List<CardAPIResponsePOJO.DataBean>
+) :
+    FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private val mViews: MutableList<CardView?> = mutableListOf()
-    private val mData: MutableList<CardItem> = mutableListOf()
-    private var mBaseElevation = 0f
-
-    fun addCardItem(item: CardItem) {
-        mViews.add(null)
-        mData.add(item)
-    }
-
-    override fun isViewFromObject(view: View, obj: Any): Boolean {
-        return view == obj
-    }
 
     override fun getCount(): Int {
-        return mData.size
+        return cardsList.size
     }
 
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val view =
-            LayoutInflater.from(container.context).inflate(R.layout.item_cards, container, false)
-        container.addView(view)
-        bind(mData[position], view)
-        val cardView: CardView = view.findViewById(R.id.cv_item_swipeable_card)
-        if (mBaseElevation == 0f) {
-            mBaseElevation = cardView.cardElevation
-        }
 
-        cardView.maxCardElevation = mBaseElevation * Constants.MAX_ELEVATION_FACTOR
-        mViews[position] = cardView
-        return view
+    override fun getItem(position: Int): Fragment {
+        val cardFragment = CardFragment()
+        val bundle = Bundle()
+        bundle.putString("pos", cardsList[position].id)
+        bundle.putString("text", cardsList[position].text)
+        bundle.putInt("size", cardsList.size)
+        cardFragment.arguments = bundle
+        return cardFragment
     }
 
-    override fun destroyItem(container: ViewGroup, position: Int, obj: Any) {
-        container.removeView(obj as View)
-        mViews[position] = null
-    }
-
-    private fun bind(item: CardItem, view: View) {
-        val numberIndicator: TextView = view.findViewById(R.id.tvNumOfCard)
-        val contentTextView: TextView = view.findViewById(R.id.card_item_text)
-        numberIndicator.text = item.id
-        contentTextView.text = item.text
-
-    }
 }
