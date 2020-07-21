@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.assignment.infinitelyswipablecards.MainActivityVMFactory
 import com.assignment.infinitelyswipablecards.commons.Constants
 import com.assignment.infinitelyswipablecards.network.ApiCallInterface
-import com.assignment.userinfoapp.network.Repository
+import com.assignment.infinitelyswipablecards.network.Repository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

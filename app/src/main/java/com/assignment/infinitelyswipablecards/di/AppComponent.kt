@@ -1,8 +1,7 @@
 package com.assignment.infinitelyswipablecards.di
 
 import com.assignment.infinitelyswipablecards.MainActivity
-import com.assignment.userinfoapp.di.UtilsModule
-import com.assignment.userinfoapp.network.Repository
+import com.assignment.infinitelyswipablecards.network.Repository
 import dagger.Component
 import javax.inject.Singleton
 
