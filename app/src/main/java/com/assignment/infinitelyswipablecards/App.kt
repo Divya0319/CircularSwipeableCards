@@ -13,6 +13,11 @@ import com.assignment.infinitelyswipablecards.di.UtilsModule
 /**
  * Created by Divya Gupta.
  */
+
+/**
+ * Application class created for handling application configurations under one roof, and also for building the Dagger components
+ * centrally
+ */
 class App : Application() {
     lateinit var appComponent: AppComponent
         private set
@@ -51,7 +56,7 @@ class App : Application() {
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT  // it sets the orientation of every activity of app, as PORTRAIT only
             }
 
             override fun onActivityResumed(activity: Activity) {

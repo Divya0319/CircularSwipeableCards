@@ -3,6 +3,10 @@ package com.assignment.infinitelyswipablecards.models
 /**
  * Created by Divya Gupta.
  */
+
+/**
+ * A POJO class created to hold the response data coming from server.
+ */
 class CardAPIResponsePOJO {
     var data: MutableList<DataBean> = mutableListOf()
 

@@ -7,7 +7,7 @@ import okhttp3.ResponseBody
  */
 
 /**
- * A wrapper class created for capturing the API call responses,
+ * A network utility class created for capturing the API call responses,
  * let it be call ongoing, call returned success , call returned error, or call returned empty response with success status code(200)
  */
 class ApiResponse(val status: Status, val data: ResponseBody?, val error: Throwable?) {

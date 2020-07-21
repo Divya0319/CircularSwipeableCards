@@ -6,6 +6,11 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 /**
  * Created by Divya Gupta.
  */
+
+/**
+ * This class is created separately for creating Circular ViewPager logic
+ * It accepts the parameter @param mViewPager, and handles its scrollState, so that a circular scrolling effect is achieved
+ */
 class CircularViewPagerHandler(private val mViewPager: ViewPager) : OnPageChangeListener {
     private var mCurrentPosition = 0
     private var mIsEndOfCycle = false

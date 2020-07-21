@@ -35,14 +35,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mMainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        mMainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)  // DataBinding utilised for accessing views in layout
 
-        (application as App).appComponent.doInjection(this)
+        (application as App).appComponent.doInjection(this) // dagger componnent is injected, in order to provide dependencies
 
         mMainActivityViewModel =
-            ViewModelProvider(this, mMainActivityVMFactory)[MainActivityViewModel::class.java]
+            ViewModelProvider(this, mMainActivityVMFactory)[MainActivityViewModel::class.java] // ViewModel instance created using viewmodel factory
 
         initialiseProgressDialog()
+
+        supportActionBar?.title = "Circular Swipeable Cards"
 
         mMainActivityViewModel.cardsApiResponse.observe(
             this,
@@ -101,17 +103,20 @@ class MainActivity : AppCompatActivity() {
         dialog.setCancelable(false)
     }
 
+    // shows the custom progress dialog
     private fun showProgressDialog() {
         hideBothViewPagerAndNoInternetLayout()
         if (!dialog.isShowing)
             dialog.show()
     }
 
+    // hides the custom progress dialog
     private fun hideProgressDialog() {
         if (dialog.isShowing)
             dialog.dismiss()
     }
 
+    // gets called when api call returned an error
     private fun renderErrorResponse(error: Throwable?) {
         showOnlyNoInternetLayout()
         if (error is HttpException) {
@@ -121,6 +126,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // gets called when API response is successfully received
     private fun renderSuccessResponse(data: ResponseBody) {
         showOnlyViewPagerLayout()
         var jsonString = data.string()
@@ -133,16 +139,19 @@ class MainActivity : AppCompatActivity() {
         updateUI(cards)
     }
 
+    // hide both viewpager and no internet layout
     private fun hideBothViewPagerAndNoInternetLayout() {
         mMainActivityBinding.viewPager.visibility = View.INVISIBLE
         mMainActivityBinding.clNoInternet.visibility = View.INVISIBLE
     }
 
+    // hide viewpager layout, and show only no internet layout
     private fun showOnlyNoInternetLayout() {
         mMainActivityBinding.viewPager.visibility = View.INVISIBLE
         mMainActivityBinding.clNoInternet.visibility = View.VISIBLE
     }
 
+    // hide no internet layout, and show only viewpager
     private fun showOnlyViewPagerLayout() {
         mMainActivityBinding.viewPager.visibility = View.VISIBLE
         mMainActivityBinding.clNoInternet.visibility = View.INVISIBLE
