@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.viewpager.widget.PagerAdapter
-import com.assignment.infinitelyswipablecards.adapters.CardAdapter
+import com.assignment.infinitelyswipablecards.commons.Constants
 import com.assignment.infinitelyswipablecards.models.CardItem
 
 /**
  * Created by Divya Gupta.
  */
-class CardPagerAdapter : PagerAdapter(), CardAdapter {
+class CardPagerAdapter : PagerAdapter() {
 
     private val mViews: MutableList<CardView?> = mutableListOf()
     private val mData: MutableList<CardItem> = mutableListOf()
@@ -25,14 +25,6 @@ class CardPagerAdapter : PagerAdapter(), CardAdapter {
 
     override fun isViewFromObject(view: View, obj: Any): Boolean {
         return view == obj
-    }
-
-    override fun getBaseElevation(): Float {
-        return mBaseElevation
-    }
-
-    override fun getCardViewAt(position: Int): CardView? {
-        return mViews[position]
     }
 
     override fun getCount(): Int {
@@ -49,7 +41,7 @@ class CardPagerAdapter : PagerAdapter(), CardAdapter {
             mBaseElevation = cardView.cardElevation
         }
 
-        cardView.maxCardElevation = mBaseElevation * CardAdapter.MAX_ELEVATION_FACTOR
+        cardView.maxCardElevation = mBaseElevation * Constants.MAX_ELEVATION_FACTOR
         mViews[position] = cardView
         return view
     }
