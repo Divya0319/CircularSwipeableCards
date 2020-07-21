@@ -1,6 +1,6 @@
 package com.assignment.infinitelyswipablecards.network
 
-import com.google.gson.JsonElement
+import okhttp3.ResponseBody
 
 /**
  * Created by Divya Gupta.
@@ -10,7 +10,7 @@ import com.google.gson.JsonElement
  * A wrapper class created for capturing the API call responses,
  * let it be call ongoing, call returned success , call returned error, or call returned empty response with success status code(200)
  */
-class ApiResponse(val status: Status, val data: JsonElement?, val error: Throwable?) {
+class ApiResponse(val status: Status, val data: ResponseBody?, val error: Throwable?) {
     companion object {
 
         // call ongoing
@@ -19,7 +19,7 @@ class ApiResponse(val status: Status, val data: JsonElement?, val error: Throwab
         }
 
         // call returned success
-        fun success(data: JsonElement): ApiResponse {
+        fun success(data: ResponseBody): ApiResponse {
             return ApiResponse(Status.SUCCESS, data, null)
         }
 

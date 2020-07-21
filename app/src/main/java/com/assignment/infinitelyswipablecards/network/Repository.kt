@@ -2,8 +2,8 @@ package com.assignment.infinitelyswipablecards.network
 
 import android.content.Context
 import com.assignment.infinitelyswipablecards.App
-import com.google.gson.JsonElement
 import io.reactivex.Single
+import okhttp3.ResponseBody
 import javax.inject.Inject
 
 /**
@@ -25,7 +25,7 @@ class Repository(private val apiCallInterface: ApiCallInterface) {
 
     }
 
-    fun executeCardsDataApiCall(): Single<JsonElement> {
+    fun executeCardsDataApiCall(): Single<ResponseBody> {
         return apiCallInterface.getCardsData()
     }
 
