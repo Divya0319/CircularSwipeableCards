@@ -1,4 +1,4 @@
-package com.assignment.infinitelyswipablecards
+package com.assignment.infinitelyswipablecards.helpers
 
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener

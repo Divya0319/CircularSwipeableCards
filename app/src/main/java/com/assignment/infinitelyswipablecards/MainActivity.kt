@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.assignment.infinitelyswipablecards.adapters.CardPagerAdapter
 import com.assignment.infinitelyswipablecards.databinding.ActivityMainBinding
+import com.assignment.infinitelyswipablecards.helpers.CircularViewPagerHandler
 import com.assignment.infinitelyswipablecards.models.CardAPIResponsePOJO
 import com.assignment.infinitelyswipablecards.network.ApiResponse
 import com.assignment.infinitelyswipablecards.network.Status
@@ -63,7 +65,11 @@ class MainActivity : AppCompatActivity() {
             cardList.add(it)
         }
 
-        mCardPagerAdapter = CardPagerAdapter(supportFragmentManager, cardList)
+        mCardPagerAdapter =
+            CardPagerAdapter(
+                supportFragmentManager,
+                cardList
+            )
 
         mMainActivityBinding.viewPager.adapter = mCardPagerAdapter
 
@@ -119,6 +125,9 @@ class MainActivity : AppCompatActivity() {
     // gets called when api call returned an error
     private fun renderErrorResponse(error: Throwable?) {
         showOnlyNoInternetLayout()
+        mMainActivityBinding.tvRetry.setOnClickListener {
+            mMainActivityViewModel.hitCardsApi()
+        }
         if (error is HttpException) {
             mMainActivityBinding.tvCheckInternetConn.text = getString(R.string.something_went_wrong)
         } else {

@@ -1,9 +1,10 @@
-package com.assignment.infinitelyswipablecards
+package com.assignment.infinitelyswipablecards.adapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.assignment.infinitelyswipablecards.CardFragment
 import com.assignment.infinitelyswipablecards.commons.Constants
 import com.assignment.infinitelyswipablecards.models.CardAPIResponsePOJO
 
